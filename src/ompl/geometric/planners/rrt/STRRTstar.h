@@ -124,6 +124,9 @@ namespace ompl
             /** \brief Whether the state space is sampled uniformly or centered at lower time values. */
             void setSampleUniformForUnboundedTime(bool uniform);
 
+            /** \brief set the time moment, after which goal becomes valid.*/
+            void setMinTimeBound(double minTimeBound);
+
             void setup() override;
 
             /** \brief A nearest-neighbor datastructure representing a tree of motions */
@@ -323,7 +326,10 @@ namespace ompl
             int goalStateSampleRatio_ = 4;
 
             /** \brief The random number generator */
-            ompl::RNG rng_;
+            ompl::RNG rng_;  
+
+            /** \brief time moment, after which goal becomes valid*/
+            double minTimeBound_ =-1.0;
         };
     }  // namespace geometric
 }  // namespace ompl
